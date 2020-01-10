@@ -1,0 +1,253 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nuance Module Trainer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- INLINE <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- INLINE <script src="main.js"></script> -->
+</head>
+
+<body>
+    <h1>Nuance Module Trainer</h1>
+
+    <!-- Start Intro -->
+    <div id="introDisplay">
+        <p>Welcome! Please select your campaign.</p>
+        <button disabled>Comcast CORE</button>
+        <br />
+        <button onClick="initiateCams()">Comcast CAMS</button>
+    </div>
+    <!-- End Intro -->
+    <!-- ////////////////////////////////////////////////// -->
+    <!-- Start Cams -->
+
+    <div id="camsDisplay" style="display:none;">
+            <div id="camsChat">
+                    <p class="you" id="youOne">You: Hello?</p> 
+                    <p class="agent" id="agentOne">Agent: Hi my name is Agent who do I have the pleasure of speaking with today?</p>
+                    <p class="you" id="youTwo">You: My name is John Connor.</p>
+                    <p class="agent" id="agentTwo">Agent: How May I assist you today?</p>
+                    <p class="you" id="youThree">You: I need to see about getting my bill lowered.</p>
+                    <p class="agent" id="agentThree">Agent: For a request of that nature you would need to reach out to our customer care department at 800-391-3000 and
+                        they can assist you further.</p>
+
+                </div>
+        <div id="camsButtons">
+            <button onClick="clickOne()" id="optionOne">Hi my name is Agent who do I have the pleasure of speaking with today?</button>
+            <button onClick="clickTwo()" id="optionTwo">How May I assist you today?</button>
+            <button onClick="clickThree()" id="optionThree">Could I grab the business name?</button>
+            <button onClick="clickFour()" id="optionFour">To get your account pulled up would I be able to have the street address, zip code, and any unit or suite number?</button>
+            <button onClick="clickFive()" id="optionFive">I can have a business solutions specialist send over quotes for our packages and details on any promotions.</button>
+            <button onClick="clickSix()" id="optionSix">Can I have a phone number and email for you?</button>
+            <button onClick="clickSeven()" id="optionSeven">We'll have a business solutions specialist get those details right over, at the latest you can expect them during
+                business hours tommorow.</button>
+            <button onClick="clickEight()" id="optionEight">It looks like you are currently being assisted by another one of our reps, to check the status on that you would
+                need to reach out to cusotmer care at 800-391-3000</button>
+            <button onClick="clickNine()" id="optionNine">For a request of that nature you would need to reach out to our customer care department at 800-391-3000 and
+                they can assist you further.</button>
+            <button onClick="clickTen()"id="optionTen">Thank you!</button>
+            <button onClick="clickEleven()" id="optionEleven">You're Welcome!</button>
+            <button onClick="clickTwelve()" id="optionTwelve">If there is anything else I can do to assist you let me know!</button>
+        </div>
+        <div id="output">
+            <p id="prompt">Every chat opens with a message from the user, What is the correct script to use in the opening of chat?</p>
+        </div>
+        <div id="okay">
+            <button onClick="submitFunction()" id="btnSubmit">OK</button>
+            <a id="reset" href="index.html">Reset</a>
+        </div>
+    </div>
+
+    <!-- End Cams -->
+
+    <!-- THESE ARE THE FUCKING SCRIPTS! THESE ARE THE FUCKING SCRIPTS! THESE ARE THE FUCKING SCRIPTS! -->
+    <script>
+        var step = 0000;
+        function initiateCams() {
+            document.getElementById("introDisplay").style.display = 'none';
+            document.getElementById("camsDisplay").style.display = 'inline';
+            document.getElementById("youTwo").style.display = 'none'
+            document.getElementById("youThree").style.display = 'none'
+            document.getElementById("agentOne").style.display = 'none'
+            document.getElementById("agentTwo").style.display = 'none'
+            document.getElementById("agentThree").style.display = 'none'
+            document.getElementById("btnSubmit").style.display = 'none'
+            document.getElementById("reset").style.display = 'none'
+        }
+        
+        function submitFunction() {
+            if (step == 0001) {
+                document.getElementById("youTwo").style.display = "block";
+                document.getElementById("prompt").innerHTML = "Great! We have chatters first and last name but they haven't mentioned why they are chatting in, what's next?";
+                document.getElementById("btnSubmit").style.display = 'none'
+                step = 0002;
+            }
+            if (step == 0003) {
+                document.getElementById("youThree").style.display = "block";
+                document.getElementById("prompt").innerHTML = "Alright looks like the customer needs help with a billing issues, any idea what's next?";
+                document.getElementById("btnSubmit").style.display = 'none'
+                step = 0004;
+            }
+            if (step == 0005) {
+                document.getElementById("prompt").innerHTML = "Downloading ghost, please wait, like 45 min.";
+                document.getElementById("reset").style.display = "block";
+                document.getElementById("btnSubmit").style.display = 'none'
+            }
+        }
+
+        function clickOne() {
+            if (step == 0000) {
+                document.getElementById("agentOne").style.display = "block";
+                document.getElementById("prompt").innerHTML = "Correct! First step is always introducing yourself and getting the customers name." 
+                document.getElementById("btnSubmit").style.display = 'block'
+                step = 0001;
+            }
+        }
+        function clickTwo() {
+            if (step == 0002) {
+                document.getElementById("agentTwo").style.display = "block";
+                document.getElementById("prompt").innerHTML = "Good, if the chatter doesn't mention why they are chatting in the opening message you should ask how you can help."
+                document.getElementById("btnSubmit").style.display = 'block' 
+                step = 0003;
+            }
+        }
+        function clickNine() {
+            if (step == 0004) {
+                document.getElementById("agentThree").style.display = "block";
+                document.getElementById("prompt").innerHTML = "You got it. anytime a customer is looking to only get there bill lowered or services downgraded you should provide them with the number for customer care."
+                document.getElementById("btnSubmit").style.display = 'block' 
+                step = 0005;
+            }
+        }
+        function clickThree() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }
+        }
+        function clickFour() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickFive() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickSix() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickSeven() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickEight() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickTen() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickEleven() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+        function clickTwelve() {
+            if (step == 0004 || step == 0002 || step == 0000) {
+            document.getElementById("prompt").innerHTML = "Nope, keep trying.";
+            }        }
+    </script>
+
+    <!-- THESE ARE THE FUCKING STYLES! THESE ARE THE FUCKING STYLES! THESE ARE THE FUCKING STYLES! -->
+    <style>
+
+        body {
+            background-color: #003366;
+            color: #ffffff;
+            padding-right: 7.5%;
+        }
+
+        #introDisplay button {
+            width: 33%;
+            display: flex;
+            flex-direction: column;
+            -webkit-transition-duration: 0.2s; /* Safari */
+            transition-duration: 0.2s;
+            padding: .5em;
+        }
+
+        #introDisplay button:hover {
+            background-color: #003366;
+            color: white;
+        }
+
+        .you {
+            margin-left: 5%;
+            margin-right: 35%;
+            padding: 1%; 
+            text-align: left;
+            color: #000000;
+            background-color: #3399ff;
+            border-radius: 15px 50px 30px 5px;
+        }
+
+        .agent {
+            margin-right: 5%;
+            margin-left: 35%;
+            padding: 1%;
+            text-align: right;
+            color: #000000;
+            background-color: #0066cc;
+            border-radius: 50px 15px 5px 15px;
+        }
+
+        #camsChat {
+            width: 60%;
+            float: right;
+            border-style: solid;
+            border-color: #000000;
+            height: 90%;
+            background-color: #99ccff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5em;
+        }
+        
+        #camsDisplay button {
+            width: 33%;
+            display: flex;
+            flex-direction: column;
+            -webkit-transition-duration: 0.2s; /* Safari */
+            transition-duration: 0.2s;
+            padding: .5em;
+        }
+
+        #camsDisplay button:hover {
+            background-color: #003366;
+            color: white;
+        }
+
+        #okay button {
+            width: 11%;
+            display: flex;
+            flex-direction: column;
+            -webkit-transition-duration: 0.2s; /* Safari */
+            transition-duration: 0.2s;
+            padding: .5em;
+        }
+
+        #okay button:hover {
+            background-color: #003366;
+            color: white;
+        }
+
+        #output {
+            font-weight: bold;
+        }
+
+
+    </style>
+</body>
+
+</html>
